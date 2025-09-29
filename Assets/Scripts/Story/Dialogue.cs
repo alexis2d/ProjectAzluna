@@ -7,16 +7,5 @@ public class Dialogue : MonoBehaviour
     private Character listener;
     private string dialogueText;
     private Expression expression;
-
     
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 }
