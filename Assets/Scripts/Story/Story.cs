@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class Story : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int id;
+    private string title;
+    private Dialogue[] dialogues;
+    private int currentDialogueIndex = 0;
+    
 }
