@@ -6,7 +6,6 @@ public class Story : MonoBehaviour
 
     [SerializeField]
     private string title;
-    [SerializeField]
     private Dialogue[] dialogues;
     private int currentDialogueIndex = 0;
 

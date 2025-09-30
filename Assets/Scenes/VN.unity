@@ -150,6 +150,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 717331318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &135505274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135505275}
+  - component: {fileID: 135505276}
+  m_Layer: 0
+  m_Name: Dialogue2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &135505275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135505274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 768414363}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135505276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135505274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71eb0a862320d44196792f28eee6a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  speaker: {fileID: 420672076}
+  listener: {fileID: 1360028848}
+  dialogueText: Let's go.
+  expression: 3
+  isEndDialogue: 1
 --- !u!1 &309819423
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,8 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00783b9d3c50774b9214c9b26e2fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  name: Anani
+  characterName: 
   model: {fileID: 0}
+  animationClips: []
 --- !u!1 &358491859
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,8 +323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00783b9d3c50774b9214c9b26e2fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  name: Lumi
+  characterName: 
   model: {fileID: 0}
+  animationClips: []
 --- !u!1 &717331317
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,8 +386,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1346549636}
+  m_Children:
+  - {fileID: 1469145208}
+  m_Father: {fileID: 2088146842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768414362
 GameObject:
@@ -368,6 +420,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2088146842}
+  - {fileID: 135505275}
   m_Father: {fileID: 1346549636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965528224
@@ -573,7 +626,6 @@ Transform:
   m_Children:
   - {fileID: 717331318}
   - {fileID: 768414363}
-  - {fileID: 737812607}
   m_Father: {fileID: 1491994549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1346549637
@@ -589,7 +641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Story
   title: The beginning
-  dialogues: []
 --- !u!1 &1360028846
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,8 +685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00783b9d3c50774b9214c9b26e2fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  name: Azri
+  characterName: 
   model: {fileID: 0}
+  animationClips: []
 --- !u!1 &1375150188
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +719,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 358491860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1469145207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1469145208}
+  - component: {fileID: 1469145209}
+  m_Layer: 0
+  m_Name: Choice1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1469145208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469145207}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 737812607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469145209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469145207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac8d6bb023397147988fd5f4c1d5c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Choice
+  choiceText: Hi !!
+  nextDialogue: {fileID: 135505276}
 --- !u!1 &1491994548
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +839,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 737812607}
   m_Father: {fileID: 768414363}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088146843
@@ -759,8 +858,8 @@ MonoBehaviour:
   speaker: {fileID: 1360028848}
   listener: {fileID: 420672076}
   dialogueText: Hello girl !
-  expression: {fileID: 0}
-  choices: []
+  expression: 0
+  isEndDialogue: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

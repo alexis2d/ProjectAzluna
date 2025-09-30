@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
 {
 
     [SerializeField]
-    private string name;
+    private string characterName;
     [SerializeField]
     private CubismModel model;
     [SerializeField]

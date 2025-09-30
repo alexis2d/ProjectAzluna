@@ -12,7 +12,8 @@ public class Dialogue : MonoBehaviour
     private string dialogueText;
     [SerializeField]
     private Expression expression;
-    [SerializeField]
     private Choice[] choices;
+    [SerializeField]
+    private bool isEndDialogue = false;
     
 }
