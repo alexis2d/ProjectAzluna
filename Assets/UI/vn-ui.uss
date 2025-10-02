@@ -1,0 +1,19 @@
+#MainContainer {
+    
+}
+
+#DialogueBubble {
+    -unity-font-style: Bold;
+    -unity-font-size: 18;
+    -unity-text-align: middle-center;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    padding: 5%;
+    margin: 5%;
+    height: auto;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
