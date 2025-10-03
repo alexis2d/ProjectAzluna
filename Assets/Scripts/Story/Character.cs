@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     public void SetExpression(Enums.Expression expression)
     {
         CubismMotionController controller = model.GetComponent<CubismMotionController>();
-        
+
         if (controller != null)
         {
             controller.PlayAnimation(GetExpressionAnimationClip(expression));
@@ -34,6 +34,11 @@ public class Character : MonoBehaviour
         // TODO get clip by name
 
         return clip;
+    }
+    
+    public string GetName()
+    {
+        return characterName;
     }
 
 }

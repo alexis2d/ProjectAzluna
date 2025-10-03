@@ -16,7 +16,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField]
     private bool isEndDialogue = false;
 
-    private void Start()
+    private void Awake()
     {
         SetChoices();
     }

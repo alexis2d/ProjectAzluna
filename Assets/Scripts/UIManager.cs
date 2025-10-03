@@ -6,7 +6,22 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private UIDocument uiDocument;
+    private static UIManager instance;
+    public static UIManager Instance { get { return instance; } }
     private VisualElement root;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnEnable()
     {
@@ -17,7 +32,10 @@ public class UIManager : MonoBehaviour
     {
         Label dialogueLabel = root.Q<Label>("DialogueText");
         dialogueLabel.text = dialogue.GetDialogueText();
-        root.Q<VisualElement>("DialogueBox").style.display = DisplayStyle.Flex;
+        Label speakerLabel = root.Q<Label>("Speaker");
+        speakerLabel.text = dialogue.GetSpeaker().GetName();
+        Choice[] choices = dialogue.GetChoices();
+        root.Q<VisualElement>("DialogueBubble").style.display = DisplayStyle.Flex;
     }
 
 }

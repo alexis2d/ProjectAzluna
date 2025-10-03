@@ -4,7 +4,6 @@
 
 #DialogueBubble {
     -unity-font-style: Bold;
-    -unity-font-size: 18;
     -unity-text-align: middle-center;
     position: absolute;
     bottom: 0;
@@ -15,5 +14,52 @@
     margin: 5%;
     height: auto;
     width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+#DialogueBubble:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+#TextsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+#Speaker {
+    -unity-font-style: Bold;
+    -unity-text-align: middle-left;
+    color: #FFD700;
+    margin-bottom: 5px;
+}
+
+#DialogueText {
+    -unity-font-style: Normal;
+    -unity-text-align: middle-left;
+    color: white;
+}
+
+#ChoicesContainer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    margin: 2% 0;
+}
+
+#ChoicesContainer Button {
+    -unity-font-style: Normal;
+    -unity-text-align: middle-center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 85%;
+    color: white;
+    transition: background-color 0.3s, transform 0.1s;
 }

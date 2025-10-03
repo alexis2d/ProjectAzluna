@@ -151,6 +151,37 @@ Transform:
   - {fileID: 654109355}
   m_Father: {fileID: 717331318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &102663943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102663944}
+  m_Layer: 0
+  m_Name: Models
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &102663944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102663943}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.36181, y: -0.13874, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135505274
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00783b9d3c50774b9214c9b26e2fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  characterName: 
+  characterName: Anani
   model: {fileID: 0}
   animationClips: []
 --- !u!1 &358491859
@@ -324,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00783b9d3c50774b9214c9b26e2fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  characterName: 
+  characterName: Lumi
   model: {fileID: 0}
   animationClips: []
 --- !u!1 &531360202
@@ -524,6 +555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469145208}
+  - {fileID: 1629546945}
   m_Father: {fileID: 2088146842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768414362
@@ -876,7 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00783b9d3c50774b9214c9b26e2fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  characterName: 
+  characterName: Azri
   model: {fileID: 0}
   animationClips: []
 --- !u!1 &1375150188
@@ -1001,6 +1033,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f50abdedb8663429ea8c6474169efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryController
+--- !u!1 &1629546944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629546945}
+  - component: {fileID: 1629546946}
+  m_Layer: 0
+  m_Name: Choice2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1629546945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629546944}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 737812607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629546946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629546944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac8d6bb023397147988fd5f4c1d5c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Choice
+  choiceText: Hello !
+  nextDialogue: {fileID: 135505276}
 --- !u!1 &2088146841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,3 +1138,4 @@ SceneRoots:
   - {fileID: 531360204}
   - {fileID: 358491860}
   - {fileID: 1491994549}
+  - {fileID: 102663944}
