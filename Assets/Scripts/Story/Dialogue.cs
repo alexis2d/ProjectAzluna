@@ -1,5 +1,6 @@
 using UnityEngine;
 using Enums;
+using System.Text.RegularExpressions;
 
 public class Dialogue : MonoBehaviour
 {
@@ -44,10 +45,29 @@ public class Dialogue : MonoBehaviour
     {
         return isEndDialogue;
     }
-    
+
+    public int GetStoryId()
+    {
+        MatchCollection matches = Regex.Matches(name, @"\d+");
+
+        if (matches.Count >= 2)
+        {
+            return int.Parse(matches[0].Value);
+        }
+
+        return 0;
+    }
+
     public int GetId()
     {
-        return int.Parse(gameObject.name.Replace("Dialogue", ""));
+        MatchCollection matches = Regex.Matches(name, @"\d+");
+
+        if (matches.Count >= 2)
+        {
+            return int.Parse(matches[1].Value);
+        }
+
+        return 0;
     }
 
 }

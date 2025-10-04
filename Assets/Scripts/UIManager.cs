@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -36,11 +37,12 @@ public class UIManager : MonoBehaviour
 
     public void ShowDialogue(Dialogue dialogue)
     {
+        Debug.Log(dialogue.GetDialogueText());
         dialogueLabel.text = dialogue.GetDialogueText();
         speakerLabel.text = dialogue.GetSpeaker().GetName();
         choices = dialogue.GetChoices();
         choiceButtons = new Button[choices.Length];
-        
+
         for (int i = 0; i < choices.Length; i++)
         {
             choiceButtons[i] = GetButtonByIndex(i);
@@ -58,14 +60,13 @@ public class UIManager : MonoBehaviour
         }
         return button;
     }
-    
+
     private void ChoiceClicked(int choiceIndex)
     {
         for (int i = 0; i < choiceButtons.Length; i++)
         {
             choiceButtons[i].clicked -= () => ChoiceClicked(i);
         }
-        choiceButtons[choiceIndex].clicked -= () => ChoiceClicked(choiceIndex);
         StoryController.Instance.OnChoiceSelected(choices[choiceIndex].GetNextDialogue());
     }
 

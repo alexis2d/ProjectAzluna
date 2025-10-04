@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StoryController : MonoBehaviour
@@ -14,19 +15,19 @@ public class StoryController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            stories = FindObjectsByType<Story>(FindObjectsSortMode.None);
+            LoadStory(1);
+            if (currentStory == null)
+            {
+                Debug.Log("No story found.");
+                return;
+            }
+            ShowCurrentDialogue();
         }
         else
         {
             Destroy(gameObject);
         }
-        stories = FindObjectsByType<Story>(FindObjectsSortMode.None);
-        LoadStory(1);
-        if (currentStory == null)
-        {
-            Debug.Log("No story found.");
-            return;
-        }
-        ShowCurrentDialogue();
     }
 
     private void LoadStory(int storyId)
@@ -75,7 +76,10 @@ public class StoryController : MonoBehaviour
     {
         if (nextDialogue == null && currentDialogue.IsEndDialogue())
         {
-            LoadStory(currentStory.getId() + 1); // TODO need to reactivate the next story
+            int newStoryId = currentStory.getId() + 1;
+            currentStory.gameObject.SetActive(false);
+            stories[newStoryId - 1].gameObject.SetActive(true);
+            LoadStory(newStoryId);
             ShowCurrentDialogue();
             return;
         }
