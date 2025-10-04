@@ -46,9 +46,13 @@ public class Story : MonoBehaviour
         return null;
     }
 
-    public void AddDialogueIndex()
+    public void SetDialogueIndex(int newDialogueId)
     {
-        currentDialogueIndex++;
+        int newDialogueIndex = newDialogueId - 1;
+        if (newDialogueIndex >= 0 && newDialogueIndex < dialogues.Length)
+        {
+            currentDialogueIndex = newDialogueIndex;
+        }
     }
     
 }

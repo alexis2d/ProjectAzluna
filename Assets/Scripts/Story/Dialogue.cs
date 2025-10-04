@@ -37,12 +37,17 @@ public class Dialogue : MonoBehaviour
 
     public Choice[] GetChoices()
     {
-        return GetComponentsInChildren<Choice>();;
+        return GetComponentsInChildren<Choice>(); ;
     }
 
     public bool IsEndDialogue()
     {
         return isEndDialogue;
+    }
+    
+    public int GetId()
+    {
+        return int.Parse(gameObject.name.Replace("Dialogue", ""));
     }
 
 }

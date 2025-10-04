@@ -7,5 +7,16 @@ public class Choice : MonoBehaviour
     private string choiceText;
     [SerializeField]
     private Dialogue nextDialogue;
+    // expression ?
+
+    public string GetText()
+    {
+        return choiceText;
+    }
+
+    public Dialogue GetNextDialogue()
+    {
+        return nextDialogue;
+    }
     
 }

@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     private VisualElement root;
     private Label dialogueLabel;
     private Label speakerLabel;
+    private Choice[] choices;
     private Button[] choiceButtons;
 
     private void Awake()
@@ -37,7 +38,7 @@ public class UIManager : MonoBehaviour
     {
         dialogueLabel.text = dialogue.GetDialogueText();
         speakerLabel.text = dialogue.GetSpeaker().GetName();
-        Choice[] choices = dialogue.GetChoices();
+        choices = dialogue.GetChoices();
         choiceButtons = new Button[choices.Length];
         
         for (int i = 0; i < choices.Length; i++)
@@ -53,13 +54,19 @@ public class UIManager : MonoBehaviour
         if (button != null)
         {
             button.clicked += () => ChoiceClicked(index);
+            button.text = choices[index].GetText();
         }
         return button;
     }
     
     private void ChoiceClicked(int choiceIndex)
     {
-        Debug.Log("Choice " + (choiceIndex + 1) + " clicked.");
+        for (int i = 0; i < choiceButtons.Length; i++)
+        {
+            choiceButtons[i].clicked -= () => ChoiceClicked(i);
+        }
+        choiceButtons[choiceIndex].clicked -= () => ChoiceClicked(choiceIndex);
+        StoryController.Instance.OnChoiceSelected(choices[choiceIndex].GetNextDialogue());
     }
 
 }

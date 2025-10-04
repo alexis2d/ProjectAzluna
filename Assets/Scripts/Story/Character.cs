@@ -1,9 +1,6 @@
 using Live2D.Cubism.Core;
 using Live2D.Cubism.Framework.Motion;
 using UnityEngine;
-using Enums;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.NCalc;
 
 
 public class Character : MonoBehaviour
@@ -11,7 +8,6 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     private string characterName;
-    [SerializeField]
     private CubismModel model;
     [SerializeField]
     private AnimationClip[] animationClips;
