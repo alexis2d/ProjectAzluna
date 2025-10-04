@@ -12,19 +12,8 @@ public class Dialogue : MonoBehaviour
     private string dialogueText;
     [SerializeField]
     private Expression expression;
-    private Choice[] choices;
     [SerializeField]
     private bool isEndDialogue = false;
-
-    private void Awake()
-    {
-        SetChoices();
-    }
-
-    private void SetChoices()
-    {
-        choices = GetComponentsInChildren<Choice>();
-    }
 
     public Character GetSpeaker()
     {
@@ -48,7 +37,7 @@ public class Dialogue : MonoBehaviour
 
     public Choice[] GetChoices()
     {
-        return choices;
+        return GetComponentsInChildren<Choice>();;
     }
 
     public bool IsEndDialogue()
