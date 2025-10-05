@@ -37,6 +37,7 @@
 #DialogueText {
     -unity-font-style: Normal;
     -unity-text-align: middle-left;
+    white-space: normal;
     color: white;
 }
 

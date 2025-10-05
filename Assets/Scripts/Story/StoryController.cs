@@ -32,15 +32,15 @@ public class StoryController : MonoBehaviour
 
     private void LoadStory(int storyId)
     {
-        string storyName = "Story" + storyId;
-        GameObject storyObject = GameObject.Find(storyName);
-        if (storyObject != null)
+        Story searchedStory = stories[storyId - 1];
+        if (searchedStory != null)
         {
-            currentStory = storyObject.GetComponent<Story>();
+            currentStory = searchedStory;
             foreach (Story story in stories)
             {
                 if (story == currentStory)
                 {
+                    story.gameObject.SetActive(true);
                     continue;
                 }
                 story.gameObject.SetActive(false);
@@ -52,7 +52,7 @@ public class StoryController : MonoBehaviour
         {
             currentStory = null;
             currentDialogue = null;
-            Debug.Log("Story object not found: " + storyName);
+            Debug.Log("Story object not found: " + storyId);
         }
     }
 
@@ -100,8 +100,6 @@ public class StoryController : MonoBehaviour
     private void LoadNextStory()
     {
         int newStoryId = currentStory.getId() + 1;
-        currentStory.gameObject.SetActive(false);
-        stories[newStoryId - 1].gameObject.SetActive(true);
         LoadStory(newStoryId);
         ShowCurrentDialogue();
     }
