@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private Label dialogueLabel;
     private Label speakerLabel;
     private Choice[] choices;
-    private Button[] choiceButtons;
+    private VisualElement choicesContainer;
 
     private void Awake()
     {
@@ -33,41 +33,54 @@ public class UIManager : MonoBehaviour
         root = uiDocument.rootVisualElement;
         dialogueLabel = root.Q<Label>("DialogueText");
         speakerLabel = root.Q<Label>("Speaker");
+        choicesContainer = root.Q<VisualElement>("ChoicesContainer");
     }
 
     public void ShowDialogue(Dialogue dialogue)
     {
-        Debug.Log(dialogue.GetDialogueText());
         dialogueLabel.text = dialogue.GetDialogueText();
-        speakerLabel.text = dialogue.GetSpeaker().GetName();
-        choices = dialogue.GetChoices();
-        choiceButtons = new Button[choices.Length];
-
-        for (int i = 0; i < choices.Length; i++)
+        string speakerName = "Narrator";
+        if (dialogue.GetSpeaker() != null)
         {
-            choiceButtons[i] = GetButtonByIndex(i);
+            speakerName = dialogue.GetSpeaker().GetName();
         }
+        speakerLabel.text = speakerName;
+        choices = dialogue.GetChoices();
+        choicesContainer.Clear();
+        GenerateButtons();
         root.Q<VisualElement>("DialogueBubble").style.display = DisplayStyle.Flex;
     }
 
-    private Button GetButtonByIndex(int index)
+    private void GenerateButtons()
     {
-        Button button = root.Q<Button>("Choice" + (index + 1));
-        if (button != null)
+        if (choices == null || choices.Length == 0)
         {
-            button.clicked += () => ChoiceClicked(index);
-            button.text = choices[index].GetText();
+            Button btn = new Button();
+            btn.text = "Continue";
+            btn.name = "Choice1";
+            btn.clicked += () => ContinueClicked();
+            choicesContainer.Add(btn);
+            return;
         }
-        return button;
+        for (int i = 0; i < choices.Length; i++)
+        {
+            int index = i;
+            Button btn = new Button();
+            btn.text = choices[index].GetText();
+            btn.name = "Choice" + (index + 1);
+            btn.clicked += () => ChoiceClicked(index);
+            choicesContainer.Add(btn);
+        }
     }
 
     private void ChoiceClicked(int choiceIndex)
     {
-        for (int i = 0; i < choiceButtons.Length; i++)
-        {
-            choiceButtons[i].clicked -= () => ChoiceClicked(i);
-        }
         StoryController.Instance.OnChoiceSelected(choices[choiceIndex].GetNextDialogue());
+    }
+
+    private void ContinueClicked()
+    {
+        StoryController.Instance.OnContinueSelected();
     }
 
 }

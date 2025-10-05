@@ -39,10 +39,11 @@ public class StoryController : MonoBehaviour
             currentStory = storyObject.GetComponent<Story>();
             foreach (Story story in stories)
             {
-                if (story == currentStory) {
+                if (story == currentStory)
+                {
                     continue;
                 }
-                story.gameObject.SetActive(false); 
+                story.gameObject.SetActive(false);
             }
             currentStory.StartStory();
             currentDialogue = currentStory.GetCurrentDialogue();
@@ -76,15 +77,32 @@ public class StoryController : MonoBehaviour
     {
         if (nextDialogue == null && currentDialogue.IsEndDialogue())
         {
-            int newStoryId = currentStory.getId() + 1;
-            currentStory.gameObject.SetActive(false);
-            stories[newStoryId - 1].gameObject.SetActive(true);
-            LoadStory(newStoryId);
-            ShowCurrentDialogue();
+            LoadNextStory();
             return;
         }
         currentStory.SetDialogueIndex(nextDialogue.GetId());
         currentDialogue = currentStory.GetCurrentDialogue();
+        ShowCurrentDialogue();
+    }
+
+    public void OnContinueSelected()
+    {
+        if (currentDialogue.IsEndDialogue())
+        {
+            LoadNextStory();
+            return;
+        }
+        currentStory.SetDialogueIndex(currentDialogue.GetId() + 1);
+        currentDialogue = currentStory.GetCurrentDialogue();
+        ShowCurrentDialogue();
+    }
+
+    private void LoadNextStory()
+    {
+        int newStoryId = currentStory.getId() + 1;
+        currentStory.gameObject.SetActive(false);
+        stories[newStoryId - 1].gameObject.SetActive(true);
+        LoadStory(newStoryId);
         ShowCurrentDialogue();
     }
 

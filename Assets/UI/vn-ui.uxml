@@ -6,10 +6,7 @@
                 <ui:Label text="Speaker" name="Speaker" />
                 <ui:Label text="Dialogue Text" name="DialogueText" />
             </ui:VisualElement>
-            <ui:VisualElement name="ChoicesContainer" style="flex-grow: 1;">
-                <ui:Button text="Choice 1" name="Choice1" />
-                <ui:Button text="Choice 2" name="Choice2" />
-            </ui:VisualElement>
+            <ui:VisualElement name="ChoicesContainer" style="flex-grow: 1;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
