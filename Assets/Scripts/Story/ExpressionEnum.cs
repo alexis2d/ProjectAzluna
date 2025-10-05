@@ -1,7 +1,7 @@
 namespace Enums
 
 {
-    public enum Expression
+    public enum ExpressionEnum
     {
 
         Neutral,

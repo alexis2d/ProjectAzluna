@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+using Enums;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,7 +17,7 @@ public class StoryController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            stories = FindObjectsByType<Story>(FindObjectsSortMode.None);
+            stories = FindObjectsByType<Story>(FindObjectsSortMode.InstanceID);
             LoadStory(1);
             if (currentStory == null)
             {
@@ -64,7 +66,7 @@ public class StoryController : MonoBehaviour
             Character speaker = currentDialogue.GetSpeaker();
             if (speaker != null)
             {
-                //speaker.SetExpression(currentDialogue.GetExpression());
+                speaker.SetExpression(currentDialogue.GetExpression());
             }
         }
         else
@@ -73,8 +75,14 @@ public class StoryController : MonoBehaviour
         }
     }
 
-    public void OnChoiceSelected(Dialogue nextDialogue)
+    public void OnChoiceSelected(Choice choice)
     {
+        Dialogue nextDialogue = choice.GetNextDialogue();
+        Character listener = currentDialogue.GetListener();
+        if (listener != null)
+        {
+            listener.SetExpression(choice.GetExpression());
+        }
         if (nextDialogue == null && currentDialogue.IsEndDialogue())
         {
             LoadNextStory();

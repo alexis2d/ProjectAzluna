@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
 
     private void ChoiceClicked(int choiceIndex)
     {
-        StoryController.Instance.OnChoiceSelected(choices[choiceIndex].GetNextDialogue());
+        StoryController.Instance.OnChoiceSelected(choices[choiceIndex]);
     }
 
     private void ContinueClicked()

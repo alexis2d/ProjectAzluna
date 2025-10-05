@@ -12,7 +12,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField]
     private string dialogueText;
     [SerializeField]
-    private Expression expression;
+    private ExpressionEnum expression;
     [SerializeField]
     private bool isEndDialogue = false;
 
@@ -31,7 +31,7 @@ public class Dialogue : MonoBehaviour
         return dialogueText;
     }
 
-    public Expression GetExpression()
+    public ExpressionEnum GetExpression()
     {
         return expression;
     }

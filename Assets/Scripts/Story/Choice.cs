@@ -1,3 +1,4 @@
+using Enums;
 using UnityEngine;
 
 public class Choice : MonoBehaviour
@@ -7,7 +8,8 @@ public class Choice : MonoBehaviour
     private string choiceText;
     [SerializeField]
     private Dialogue nextDialogue;
-    // expression ?
+    [SerializeField]
+    private ExpressionEnum expression;
 
     public string GetText()
     {
@@ -17,6 +19,11 @@ public class Choice : MonoBehaviour
     public Dialogue GetNextDialogue()
     {
         return nextDialogue;
+    }
+
+    public ExpressionEnum GetExpression()
+    {
+        return expression;
     }
     
 }
