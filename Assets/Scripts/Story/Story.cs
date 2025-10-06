@@ -6,6 +6,8 @@ public class Story : MonoBehaviour
 
     [SerializeField]
     private string title;
+    [SerializeField]
+    private Character[] characters;
     private Dialogue[] dialogues;
     private int currentDialogueIndex = 0;
     private int id;
@@ -15,6 +17,16 @@ public class Story : MonoBehaviour
     {
         SetId();
         SetDialogues();
+        SetCharacters();
+    }
+
+    public void EndStory()
+    {
+        foreach (Character character in characters)
+        {
+            character.gameObject.SetActive(false);
+        }
+        gameObject.SetActive(false);
     }
 
     private void SetDialogues()
@@ -25,6 +37,14 @@ public class Story : MonoBehaviour
     private void SetId()
     {
         id = int.Parse(Regex.Replace(gameObject.name, "[^0-9]", ""));
+    }
+
+    private void SetCharacters()
+    {
+        foreach (Character character in characters)
+        {
+            character.gameObject.SetActive(true);
+        }
     }
 
     public int getId()

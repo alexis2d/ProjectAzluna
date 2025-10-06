@@ -13,7 +13,8 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         model = GetComponent<CubismModel>();
-        ResetModelParameters();
+        SetExpression(ExpressionEnum.Neutral);
+        gameObject.SetActive(true);
     }
 
     public void SetExpression(ExpressionEnum expression)

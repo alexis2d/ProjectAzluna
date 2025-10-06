@@ -6,6 +6,7 @@ using UnityEngine;
 public class StoryController : MonoBehaviour
 {
     private Story[] stories;
+    private Character[] characters;
     private Story currentStory;
     private Dialogue currentDialogue;
     private static StoryController instance;
@@ -18,6 +19,11 @@ public class StoryController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             stories = FindObjectsByType<Story>(FindObjectsSortMode.InstanceID);
+            characters = FindObjectsByType<Character>(FindObjectsSortMode.InstanceID);
+            foreach (Character character in characters)
+            {
+                character.gameObject.SetActive(false);
+            }
             LoadStory(1);
             if (currentStory == null)
             {
@@ -108,6 +114,7 @@ public class StoryController : MonoBehaviour
     private void LoadNextStory()
     {
         int newStoryId = currentStory.getId() + 1;
+        currentStory.EndStory();
         LoadStory(newStoryId);
         ShowCurrentDialogue();
     }
