@@ -1,5 +1,7 @@
+using System.Collections;
 using Enums;
 using Live2D.Cubism.Core;
+using Live2D.Cubism.Rendering;
 using UnityEngine;
 
 
@@ -86,10 +88,37 @@ public class Character : MonoBehaviour
             parameter.Value = Mathf.Clamp(value, parameter.MinimumValue, parameter.MaximumValue);
         }
     }
-    
+
     public string GetName()
     {
         return characterName;
+    }
+
+    public void SetDialogueState(DialogueStateEnum dialogueState)
+    {
+        bool highlight = false;
+        if (DialogueStateEnum.Speaker == dialogueState)
+        {
+            highlight = true;
+        }
+        SetCharacterColor(highlight);
+    }
+
+    private void SetCharacterColor(bool highlight)
+    {
+        CubismRenderer[] renderers = GetComponentsInChildren<CubismRenderer>();
+
+        foreach (CubismRenderer r in renderers)
+        {
+            if (highlight)
+            {
+                r.Color = Color.white;
+            }
+            else
+            {
+                r.Color = new Color(0.5f, 0.5f, 0.5f, 1f);
+            }
+        }
     }
 
 }

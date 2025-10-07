@@ -22,6 +22,7 @@ public class StoryController : MonoBehaviour
             characters = FindObjectsByType<Character>(FindObjectsSortMode.InstanceID);
             foreach (Character character in characters)
             {
+                character.SetDialogueState(DialogueStateEnum.None);
                 character.gameObject.SetActive(false);
             }
             LoadStory(1);
@@ -66,13 +67,20 @@ public class StoryController : MonoBehaviour
 
     private void ShowCurrentDialogue()
     {
+        ResetCharacters();
         if (currentDialogue != null)
         {
             UIManager.Instance.ShowDialogue(currentDialogue);
             Character speaker = currentDialogue.GetSpeaker();
             if (speaker != null)
             {
+                speaker.SetDialogueState(DialogueStateEnum.Speaker);
                 speaker.SetExpression(currentDialogue.GetExpression());
+            }
+            Character listener = currentDialogue.GetListener();
+            if (listener != null)
+            {
+                listener.SetDialogueState(DialogueStateEnum.Listener);
             }
         }
         else
@@ -117,6 +125,14 @@ public class StoryController : MonoBehaviour
         currentStory.EndStory();
         LoadStory(newStoryId);
         ShowCurrentDialogue();
+    }
+
+    private void ResetCharacters()
+    {
+        foreach (Character character in characters)
+        {
+            character.SetDialogueState(DialogueStateEnum.None);
+        }
     }
 
     
