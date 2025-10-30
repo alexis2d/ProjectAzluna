@@ -1,0 +1,30 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "LumiFlat.moc3",
+		"Textures": [
+			"LumiFlat.4096/texture_00.png",
+			"LumiFlat.4096/texture_01.png"
+		],
+		"Physics": "LumiFlat.physics3.json",
+		"DisplayInfo": "LumiFlat.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthForm",
+				"ParamMouthOpenY"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		}
+	]
+}

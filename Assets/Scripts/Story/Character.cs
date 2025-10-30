@@ -1,7 +1,8 @@
-using System.Collections;
 using Enums;
 using Live2D.Cubism.Core;
 using Live2D.Cubism.Rendering;
+using Live2D.Cubism.Framework.Motion;
+using Live2D.Cubism.Framework.MotionFade;
 using UnityEngine;
 
 
@@ -11,12 +12,30 @@ public class Character : MonoBehaviour
     [SerializeField]
     private string characterName;
     private CubismModel model;
+    [SerializeField]
+    private AnimationClip defaultAnimation;
 
     private void Awake()
     {
         model = GetComponent<CubismModel>();
         SetExpression(ExpressionEnum.Neutral);
         gameObject.SetActive(true);
+        InitializeLive2D(gameObject);
+    }
+
+    private void InitializeLive2D(GameObject live2DModel)
+    {
+        var model = live2DModel.GetComponent<CubismModel>();
+        if (model != null)
+        {
+            model.ForceUpdateNow();
+        }
+
+        var fadeController = live2DModel.GetComponent<CubismFadeController>();
+        if (fadeController != null)
+        {
+            fadeController.Refresh();
+        }
     }
 
     public void SetExpression(ExpressionEnum expression)
@@ -26,6 +45,7 @@ public class Character : MonoBehaviour
             return;
         }
         ResetModelParameters();
+        SetModelAnimation();
         switch (expression)
         {
             case ExpressionEnum.Neutral:
@@ -87,6 +107,19 @@ public class Character : MonoBehaviour
         {
             parameter.Value = Mathf.Clamp(value, parameter.MinimumValue, parameter.MaximumValue);
         }
+    }
+
+    private void SetModelAnimation()
+    {
+
+        Animator animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator not found on Live2D model!");
+            return;
+        }
+
+        animator.Play("Idle");
     }
 
     public string GetName()
