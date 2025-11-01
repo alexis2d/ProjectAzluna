@@ -45,7 +45,8 @@ public class Character : MonoBehaviour
             return;
         }
         ResetModelParameters();
-        SetModelAnimation();
+        SetModelAnimation(ModelAnimationEnum.Idle);
+        
         switch (expression)
         {
             case ExpressionEnum.Neutral:
@@ -109,7 +110,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void SetModelAnimation()
+    private void SetModelAnimation(ModelAnimationEnum modelAnimation)
     {
 
         Animator animator = GetComponent<Animator>();
@@ -119,7 +120,7 @@ public class Character : MonoBehaviour
             return;
         }
 
-        animator.Play("Idle");
+        animator.Play(modelAnimation.ToString());
     }
 
     public string GetName()
