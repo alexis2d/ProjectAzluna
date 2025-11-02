@@ -6481,6 +6481,7 @@ MonoBehaviour:
   choiceText: Ask Anani about her cello practice.
   nextDialogue: {fileID: 0}
   expression: 0
+  isImportant: 1
 --- !u!43 &302635604
 Mesh:
   m_ObjectHideFlags: 0
@@ -9649,7 +9650,7 @@ PrefabInstance:
       objectReference: {fileID: 1804668733}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_Name
-      value: Azri
+      value: LumiFlat
       objectReference: {fileID: 0}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_IsActive
@@ -17682,6 +17683,7 @@ MonoBehaviour:
   choiceText: Have Lumi talk about how her training went today.
   nextDialogue: {fileID: 0}
   expression: 0
+  isImportant: 1
 --- !u!114 &696168013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6997688429571259465, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
@@ -22909,6 +22911,7 @@ MonoBehaviour:
   choiceText: Ask Azri how her volunteering is going.
   nextDialogue: {fileID: 0}
   expression: 0
+  isImportant: 1
 --- !u!43 &936532707
 Mesh:
   m_ObjectHideFlags: 0
@@ -41133,7 +41136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6889567437669890227, guid: fd71c99d790d1fa4ba2db665260d892f, type: 3}
       propertyPath: m_Name
-      value: Lumi
+      value: LumiFlat
       objectReference: {fileID: 0}
     - target: {fileID: 6911421788370250069, guid: fd71c99d790d1fa4ba2db665260d892f, type: 3}
       propertyPath: m_Mesh
@@ -41593,7 +41596,7 @@ PrefabInstance:
       objectReference: {fileID: 2086808398}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_Name
-      value: Anani
+      value: LumiFlat
       objectReference: {fileID: 0}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_IsActive

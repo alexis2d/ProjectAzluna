@@ -10,6 +10,8 @@ public class Choice : MonoBehaviour
     private Dialogue nextDialogue;
     [SerializeField]
     private ExpressionEnum expression;
+    [SerializeField]
+    private bool isImportant;
 
     public string GetText()
     {
@@ -24,6 +26,11 @@ public class Choice : MonoBehaviour
     public ExpressionEnum GetExpression()
     {
         return expression;
+    }
+
+    public bool GetIsImportant()
+    {
+        return isImportant;
     }
     
 }

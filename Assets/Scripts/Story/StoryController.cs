@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Linq.Expressions;
 using Enums;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class StoryController : MonoBehaviour
     private Dialogue currentDialogue;
     private static StoryController instance;
     public static StoryController Instance { get { return instance; } }
+    private Choice[] importantChoices;
 
     private void Awake()
     {
@@ -91,6 +93,10 @@ public class StoryController : MonoBehaviour
 
     public void OnChoiceSelected(Choice choice)
     {
+        if (choice.GetIsImportant() == true)
+        {
+            RegisterImportantChoice(choice);
+        }
         Dialogue nextDialogue = choice.GetNextDialogue();
         Character listener = currentDialogue.GetListener();
         if (listener != null)
@@ -133,6 +139,37 @@ public class StoryController : MonoBehaviour
         {
             character.SetDialogueState(DialogueStateEnum.None);
         }
+    }
+
+    public void RegisterImportantChoice(Choice choice)
+    {
+        if (importantChoices == null)
+        {
+            importantChoices = new Choice[] { choice };
+        }
+        else
+        {
+            if (!importantChoices.Contains(choice))
+            {
+                var tempList = importantChoices.ToList();
+                tempList.Add(choice);
+                importantChoices = tempList.ToArray();
+            }
+        }
+    }
+
+    public Choice[] GetImportantChoices()
+    {
+        return importantChoices;
+    }
+
+    public int GetCurrentStoryId()
+    {
+        if (currentStory != null)
+        {
+            return currentStory.getId();
+        }
+        return -1;
     }
 
     
