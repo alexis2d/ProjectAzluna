@@ -72,7 +72,7 @@ public class StoryController : MonoBehaviour
         ResetCharacters();
         if (currentDialogue != null)
         {
-            UIManager.Instance.ShowDialogue(currentDialogue);
+            VNUIManager.Instance.ShowDialogue(currentDialogue);
             Character speaker = currentDialogue.GetSpeaker();
             if (speaker != null)
             {

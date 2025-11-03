@@ -2,6 +2,36 @@
     
 }
 
+#OptionsButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(150, 219, 228, 1);
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px 12px;
+    color: #fff;
+}
+
+#OptionsContainer {
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+#OptionsContainer Button {
+    -unity-font-style: Bold;
+    -unity-text-align: middle-center;
+    background-color: rgba(150, 219, 228, 1);
+    border-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    width: 200px;
+    color: #fff;
+}
+
 #DialogueBubble {
     -unity-font-style: Bold;
     -unity-text-align: middle-center;

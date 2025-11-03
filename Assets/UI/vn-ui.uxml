@@ -1,6 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/vn-ui.uss?fileID=7433441132597879392&amp;guid=a03cb76e8bc311d40accee893b9326d7&amp;type=3#vn-ui" />
     <ui:VisualElement name="MainContainer" style="flex-grow: 1;">
+        <ui:Button text="Options" name="OptionsButton" />
+        <ui:VisualElement name="OptionsContainer" style="flex-grow: 1;">
+            <ui:Button text="Save" name="SaveButton" />
+            <ui:Button text="Quit" name="QuitButton" />
+            <ui:Button text="Resume" name="ResumeButton" />
+        </ui:VisualElement>
         <ui:VisualElement name="DialogueBubble" style="flex-grow: 1;">
             <ui:VisualElement name="TextsContainer" style="flex-grow: 1;">
                 <ui:Label text="Speaker" name="Speaker" />

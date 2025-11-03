@@ -2,14 +2,19 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
 
-public class UIManager : MonoBehaviour
+public class VNUIManager : MonoBehaviour
 {
 
     [SerializeField]
     private UIDocument uiDocument;
-    private static UIManager instance;
-    public static UIManager Instance { get { return instance; } }
+    private static VNUIManager instance;
+    public static VNUIManager Instance { get { return instance; } }
     private VisualElement root;
+    private Button optionsButton;
+    private Button saveButton;
+    private Button quitButton;
+    private Button resumeButton;
+    private VisualElement optionsContainer;
     private Label dialogueLabel;
     private Label speakerLabel;
     private Choice[] choices;
@@ -31,9 +36,44 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         root = uiDocument.rootVisualElement;
+
+        // Options Elements
+        optionsButton = root.Q<Button>("OptionsButton");
+        optionsContainer = root.Q<VisualElement>("OptionsContainer");
+        optionsButton.clicked += OptionsButtonClicked;
+        resumeButton = root.Q<Button>("ResumeButton");
+        resumeButton.clicked += ResumeButtonClicked;
+
+        // Dialogue Elements
         dialogueLabel = root.Q<Label>("DialogueText");
         speakerLabel = root.Q<Label>("Speaker");
         choicesContainer = root.Q<VisualElement>("ChoicesContainer");
+    }
+
+    private void ShowOptions()
+    {
+        optionsContainer.style.display = DisplayStyle.Flex;
+    }
+
+    private void HideOptions()
+    {
+        optionsContainer.style.display = DisplayStyle.None;
+    }
+
+    private void OptionsButtonClicked()
+    {
+        if (optionsContainer.style.display == DisplayStyle.None)
+        {
+            ShowOptions();
+        }
+    }
+
+    private void ResumeButtonClicked()
+    {
+        if (optionsContainer.style.display == DisplayStyle.Flex)
+        {
+            HideOptions();
+        }
     }
 
     public void ShowDialogue(Dialogue dialogue)
