@@ -1,0 +1,21 @@
+#MainContainer {
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#MainContainer Button {
+    -unity-font-style: Bold;
+    -unity-text-align: middle-center;
+    background-color: rgba(150, 219, 228, 1);
+    border-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    width: 200px;
+    color: #fff;
+}
+
+#MainContainer Button:hover {
+    background-color: rgba(137, 177, 184, 1);
+}
