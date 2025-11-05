@@ -13,6 +13,10 @@
     color: #fff;
 }
 
+#OptionsButton:hover, #OptionsContainer Button:hover {
+    background-color: rgba(120, 189, 198, 1);
+}
+
 #OptionsContainer {
     align-items: center;
     justify-content: center;

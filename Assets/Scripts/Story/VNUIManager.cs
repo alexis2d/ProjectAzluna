@@ -62,7 +62,7 @@ public class VNUIManager : MonoBehaviour
 
     private void OptionsButtonClicked()
     {
-        if (optionsContainer.style.display == DisplayStyle.None)
+        if (optionsContainer.style.display != DisplayStyle.Flex)
         {
             ShowOptions();
         }
@@ -70,7 +70,7 @@ public class VNUIManager : MonoBehaviour
 
     private void ResumeButtonClicked()
     {
-        if (optionsContainer.style.display == DisplayStyle.Flex)
+        if (optionsContainer.style.display != DisplayStyle.None)
         {
             HideOptions();
         }
