@@ -5,6 +5,10 @@ public class PlayerData
 
     public PlayerData()
     {
+        if (StoryController.Instance == null)
+        {
+            return;
+        }
         importantChoices = StoryController.Instance.GetImportantChoices();
     }
 

@@ -6,6 +6,10 @@ public class GameData
 
     public GameData()
     {
+        if (StoryController.Instance == null)
+        {
+            return;
+        }
         playerData = new PlayerData();
         levelData = new LevelData();
     }

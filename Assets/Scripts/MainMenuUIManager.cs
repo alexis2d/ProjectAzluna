@@ -10,6 +10,8 @@ public class MainMenuUIManager : MonoBehaviour
     private static MainMenuUIManager instance;
     public static MainMenuUIManager Instance { get { return instance; } }
     private VisualElement root;
+    private Button playButton;
+    private Button quitButton;
 
     private void Awake()
     {
@@ -27,6 +29,25 @@ public class MainMenuUIManager : MonoBehaviour
     private void OnEnable()
     {
         root = uiDocument.rootVisualElement;
+
+        playButton = root.Q<Button>("PlayButton");
+        playButton.clicked += PlayButtonClicked;
+        quitButton = root.Q<Button>("QuitButton");
+        quitButton.clicked += QuitClicked;
+    }
+
+    private void PlayButtonClicked()
+    {
+        LevelManager.instance.NewGame();
+    }
+
+    private void QuitClicked()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
 }

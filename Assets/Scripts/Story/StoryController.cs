@@ -41,7 +41,7 @@ public class StoryController : MonoBehaviour
         }
     }
 
-    private void LoadStory(int storyId)
+    public void LoadStory(int storyId)
     {
         Story searchedStory = stories[storyId - 1];
         if (searchedStory != null)

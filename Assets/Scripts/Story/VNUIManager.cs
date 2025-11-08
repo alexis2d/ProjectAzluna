@@ -41,6 +41,8 @@ public class VNUIManager : MonoBehaviour
         optionsButton = root.Q<Button>("OptionsButton");
         optionsContainer = root.Q<VisualElement>("OptionsContainer");
         optionsButton.clicked += OptionsButtonClicked;
+        saveButton = root.Q<Button>("SaveButton");
+        saveButton.clicked += SaveButtonClicked;
         resumeButton = root.Q<Button>("ResumeButton");
         resumeButton.clicked += ResumeButtonClicked;
 
@@ -66,6 +68,11 @@ public class VNUIManager : MonoBehaviour
         {
             ShowOptions();
         }
+    }
+
+    private void SaveButtonClicked()
+    {
+        SaveManager.SaveGame();
     }
 
     private void ResumeButtonClicked()
