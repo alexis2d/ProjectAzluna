@@ -46,11 +46,13 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void PlayButtonClicked()
     {
+        Destroy(gameObject);
         LevelManager.instance.LoadGame();
     }
 
     private void NewGameButtonClicked()
     {
+        Destroy(gameObject);
         LevelManager.instance.NewGame();
     }
 

@@ -80,6 +80,7 @@ public class VNUIManager : MonoBehaviour
 
     private void QuitButtonClicked()
     {
+        DestroyScene();
         SceneManager.LoadScene(0);
     }
 
@@ -136,6 +137,12 @@ public class VNUIManager : MonoBehaviour
     private void ContinueClicked()
     {
         StoryController.Instance.OnContinueSelected();
+    }
+
+    private void DestroyScene()
+    {
+        Destroy(gameObject);
+        Destroy(StoryController.Instance.gameObject);
     }
 
 }
