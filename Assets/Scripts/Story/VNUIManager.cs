@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class VNUIManager : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class VNUIManager : MonoBehaviour
         optionsButton.clicked += OptionsButtonClicked;
         saveButton = root.Q<Button>("SaveButton");
         saveButton.clicked += SaveButtonClicked;
+        quitButton = root.Q<Button>("QuitButton");
+        quitButton.clicked += QuitButtonClicked;
         resumeButton = root.Q<Button>("ResumeButton");
         resumeButton.clicked += ResumeButtonClicked;
 
@@ -73,6 +76,11 @@ public class VNUIManager : MonoBehaviour
     private void SaveButtonClicked()
     {
         SaveManager.SaveGame();
+    }
+
+    private void QuitButtonClicked()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void ResumeButtonClicked()

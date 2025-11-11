@@ -19,3 +19,7 @@
 #MainContainer Button:hover {
     background-color: rgba(137, 177, 184, 1);
 }
+
+#NewGameButton {
+    display: none;
+}

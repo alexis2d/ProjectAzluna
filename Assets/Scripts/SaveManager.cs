@@ -19,7 +19,7 @@ public static class SaveManager
 
     public static GameData LoadGame()
     {
-        bool hasGameSave = File.Exists(gamePath);
+        bool hasGameSave = HasSave();
 
         if (hasGameSave == false)
         {
@@ -56,6 +56,11 @@ public static class SaveManager
         {
             Debug.LogWarning("Aucune sauvegarde à supprimer.");
         }
+    }
+
+    public static bool HasSave()
+    {
+        return File.Exists(gamePath);
     }
 
 }

@@ -11,6 +11,7 @@ public class MainMenuUIManager : MonoBehaviour
     public static MainMenuUIManager Instance { get { return instance; } }
     private VisualElement root;
     private Button playButton;
+     private Button newGameButton;
     private Button quitButton;
 
     private void Awake()
@@ -32,11 +33,23 @@ public class MainMenuUIManager : MonoBehaviour
 
         playButton = root.Q<Button>("PlayButton");
         playButton.clicked += PlayButtonClicked;
+        newGameButton = root.Q<Button>("NewGameButton");
+        newGameButton.clicked += NewGameButtonClicked;
+        if (SaveManager.HasSave() == true)
+        {
+            playButton.text = "Continue";
+            newGameButton.style.display = DisplayStyle.Flex;
+        }
         quitButton = root.Q<Button>("QuitButton");
         quitButton.clicked += QuitClicked;
     }
 
     private void PlayButtonClicked()
+    {
+        LevelManager.instance.LoadGame();
+    }
+
+    private void NewGameButtonClicked()
     {
         LevelManager.instance.NewGame();
     }
