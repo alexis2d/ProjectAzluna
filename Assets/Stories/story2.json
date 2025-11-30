@@ -1,0 +1,120 @@
+{
+    "title": "Beginning part2",
+    "characters": [
+        "Lumi",
+        "Anani",
+        "Azri"
+    ],
+    "expressions": [
+        "Neutral",
+        "Happy",
+        "Sad",
+        "Angry",
+        "Surprised",
+        "Confused"
+    ],
+    "dialogues": [
+        {
+            "speaker": "Lumi",
+            "listener": null,
+            "dialogueText": "Anyways, I really wanted to try the new ice cream place, but my training ran late…",
+            "expression": "Sad"
+        },
+        {
+            "speaker": "Azri",
+            "listener": "Lumi",
+            "dialogueText": "Oh, that's no good. Can you try tomorrow?",
+            "expression": "Sad"
+        },
+        {
+            "speaker": "Lumi",
+            "listener": "Azri",
+            "dialogueText": "Maybe, the helpline hasn't gone off as much the past couple days. I might be in the clear.",
+            "expression": "Neutral"
+        },
+        {
+            "speaker": "Anani",
+            "listener": "Lumi",
+            "dialogueText": "I don't fully understand the importance of the ice cream, but I'm sure we can handle a while without our fearless leader.",
+            "expression": "Happy"
+        },
+        {
+            "speaker": "Azri",
+            "listener": null,
+            "dialogueText": "Absolutely! It's not like our work is dangerous or anything.",
+            "expression": "Happy"
+        },
+        {
+            "speaker": "Lumi",
+            "listener": null,
+            "dialogueText": "Guys…. You're the best!",
+            "expression": "Sad"
+        },
+        {
+            "speaker": "Lumi",
+            "listener": null,
+            "dialogueText": "Idea! Let's go together!",
+            "expression": "Happy"
+        },
+        {
+            "speaker": "Lumi",
+            "listener": null,
+            "dialogueText": "If the helpline doesn't ring we can make our way over there on patrol.",
+            "expression": "Neutral"
+        },
+        {
+            "speaker": "Anani",
+            "listener": "Lumi",
+            "dialogueText": "It's in the busiest part of town, so we might get stopped for a job or two.",
+            "expression": "Neutral"
+        },
+        {
+            "speaker": "Anani",
+            "listener": null,
+            "dialogueText": "It's usually only issues like lost pets or carrying items anyways.",
+            "expression": "Neutral"
+        },
+        {
+            "speaker": "Azri",
+            "listener": null,
+            "dialogueText": "I'd like to try it! If it's not too much to ask.",
+            "expression": "Neutral"
+        },
+        {
+            "speaker": "Anani",
+            "listener": "Azri",
+            "dialogueText": "We can make it work, we'll just need to make an earlier start than normal to be safe.",
+            "expression": "Neutral"
+        },
+        {
+            "speaker": "Lumi",
+            "listener": null,
+            "dialogueText": "Awesome!! Let's go team!!",
+            "expression": "Happy"
+        },
+        {
+            "speaker": "Lumi",
+            "listener": null,
+            "dialogueText": "Oh, speaking of...",
+            "expression": "Neutral",
+            "choices": {
+                "isImportant": true,
+                "1": {
+                    "choiceText": "Ask Anani about her cello practice.",
+                    "nextDialogue": null,
+                    "expression": null
+                },
+                "2": {
+                    "choiceText": "Ask Azri how her volunteering is going.",
+                    "nextDialogue": null,
+                    "expression": null
+                },
+                "3": {
+                    "choiceText": "Have Lumi talk about how her training went today.",
+                    "nextDialogue": null,
+                    "expression": null
+                }
+            }
+        }
+    ]
+}

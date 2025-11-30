@@ -9573,7 +9573,7 @@ PrefabInstance:
       objectReference: {fileID: 1804668733}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_Name
-      value: Azri
+      value: LumiFlat
       objectReference: {fileID: 0}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_IsActive
@@ -15526,7 +15526,7 @@ Transform:
   m_Children:
   - {fileID: 34861666}
   - {fileID: 464265038}
-  m_Father: {fileID: 1491994549}
+  m_Father: {fileID: 1300375824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &620945003
 MonoBehaviour:
@@ -29578,6 +29578,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308e904e3f33207489a2c15b9b0b297b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Live2D.Cubism::Live2D.Cubism.Rendering.CubismRenderer
+--- !u!1 &1300375823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300375824}
+  m_Layer: 0
+  m_Name: Old
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1300375824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300375823}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1346549636}
+  - {fileID: 1528345543}
+  - {fileID: 620945002}
+  - {fileID: 1862762201}
+  m_Father: {fileID: 1491994549}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1307282254 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 902535949647647814, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
@@ -30909,7 +30944,7 @@ Transform:
   m_Children:
   - {fileID: 717331318}
   - {fileID: 768414363}
-  m_Father: {fileID: 1491994549}
+  m_Father: {fileID: 1300375824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1346549637
 MonoBehaviour:
@@ -34202,10 +34237,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1346549636}
-  - {fileID: 1528345543}
-  - {fileID: 620945002}
-  - {fileID: 1862762201}
+  - {fileID: 1300375824}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1491994550
@@ -34220,6 +34252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f50abdedb8663429ea8c6474169efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryController
+  storyFiles:
+  - {fileID: 4900000, guid: bc57f70e1068784439a2b77cbb7d1810, type: 3}
+  - {fileID: 4900000, guid: 57423e709d9380948a4347b38aff21b8, type: 3}
 --- !u!43 &1492679190
 Mesh:
   m_ObjectHideFlags: 0
@@ -35386,7 +35421,7 @@ Transform:
   m_Children:
   - {fileID: 514449416}
   - {fileID: 1213314209}
-  m_Father: {fileID: 1491994549}
+  m_Father: {fileID: 1300375824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1528345544
 MonoBehaviour:
@@ -41203,7 +41238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6889567437669890227, guid: fd71c99d790d1fa4ba2db665260d892f, type: 3}
       propertyPath: m_Name
-      value: Lumi
+      value: LumiFlat
       objectReference: {fileID: 0}
     - target: {fileID: 6911421788370250069, guid: fd71c99d790d1fa4ba2db665260d892f, type: 3}
       propertyPath: m_Mesh
@@ -41663,7 +41698,7 @@ PrefabInstance:
       objectReference: {fileID: 2086808398}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_Name
-      value: Anani
+      value: LumiFlat
       objectReference: {fileID: 0}
     - target: {fileID: 2313490894665185643, guid: 6aa1710015a3ba14494497cd220f8225, type: 3}
       propertyPath: m_IsActive
@@ -42582,7 +42617,7 @@ Transform:
   m_Children:
   - {fileID: 2004304918}
   - {fileID: 876283551}
-  m_Father: {fileID: 1491994549}
+  m_Father: {fileID: 1300375824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1862762202
 MonoBehaviour:

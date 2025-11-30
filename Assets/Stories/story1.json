@@ -1,0 +1,55 @@
+{
+    "title": "Beginning part1",
+    "characters": [],
+    "expressions": [],
+    "dialogues": [
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "Once upon a time, in a world just like yours…",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "The world was overrun with large shadows, scary monsters, and danger at every corner.",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "People lost everything as the monsters overtook the world, fighting broke out among the survivors, and trust was all but gone.",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "People were in despair as there seemed to be absolutely no hope for humanity anymore.",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "Then, one day, the heavens opened up, and some very special girls were chosen to help bring the world back to order.",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "With their hard work, dedication, and kindness, the evil was banished- the world slowly healed again under their watch and care.",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "Now that the evil is gone and those girls have long since retired-",
+            "expression": null
+        },
+        {
+            "speaker": null,
+            "listener": null,
+            "dialogueText": "What do you do when you're given those same powers?",
+            "expression": null
+        }
+    ]
+}

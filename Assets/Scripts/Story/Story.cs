@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 public class Story : MonoBehaviour
 {
@@ -72,6 +73,15 @@ public class Story : MonoBehaviour
         if (newDialogueIndex >= 0 && newDialogueIndex < dialogues.Length)
         {
             currentDialogueIndex = newDialogueIndex;
+        }
+    }
+
+    public void SetStoryData(StoryJson storyJson)
+    {
+        title = storyJson.title;
+        foreach (var characterName in storyJson.characters)
+        {
+            characters.Append(GameObject.Find(characterName).GetComponent<Character>());
         }
     }
     

@@ -1,11 +1,14 @@
 using System.Linq;
 using System.Linq.Expressions;
 using Enums;
+using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class StoryController : MonoBehaviour
 {
+    [SerializeField]
+    private TextAsset[] storyFiles;
     private Story[] stories;
     private Character[] characters;
     private Story currentStory;
@@ -20,7 +23,7 @@ public class StoryController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            stories = FindObjectsByType<Story>(FindObjectsSortMode.InstanceID);
+            LoadStoriesFromFiles();
             characters = FindObjectsByType<Character>(FindObjectsSortMode.InstanceID);
             foreach (Character character in characters)
             {
@@ -170,6 +173,38 @@ public class StoryController : MonoBehaviour
             return currentStory.getId();
         }
         return -1;
+    }
+
+    private void LoadStoriesFromFiles()
+    {
+        for (int i = 0; i < storyFiles.Length; i++)
+        {
+            try
+            {
+                StoryJson storyJson = JsonConvert.DeserializeObject<StoryJson>(storyFiles[i].text);
+
+                if (storyJson != null)
+                {
+                    Debug.Log("Nom : " + storyJson.title);
+                    stories.Append(CreateStoryObjectFromData(storyJson, i + 1).GetComponent<Story>());
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Erreur JSON dans " + storyFiles[i].name + " : " + e.Message);
+            }
+        }
+    }
+
+    private GameObject CreateStoryObjectFromData(StoryJson storyJson, int storyIndex)
+    {
+        GameObject storyObj = new GameObject("Story"+storyIndex);
+        storyObj.transform.SetParent(gameObject.transform);
+        Story story = storyObj.AddComponent<Story>();
+        story.SetStoryData(storyJson);
+        Debug.Log("Story created: " + story.GetTitle());
+
+        return storyObj;
     }
 
     
