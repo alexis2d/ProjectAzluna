@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Enums;
@@ -8,9 +9,9 @@ using UnityEngine;
 public class StoryController : MonoBehaviour
 {
     [SerializeField]
-    private TextAsset[] storyFiles;
-    private Story[] stories;
-    private Character[] characters;
+    private List<TextAsset> storyFiles;
+    private List<Story> stories;
+    private List<Character> characters;
     private Story currentStory;
     private Dialogue currentDialogue;
     private static StoryController instance;
@@ -23,14 +24,16 @@ public class StoryController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadStoriesFromFiles();
-            characters = FindObjectsByType<Character>(FindObjectsSortMode.InstanceID);
+            characters = FindObjectsByType<Character>(FindObjectsSortMode.InstanceID).ToList();
             foreach (Character character in characters)
             {
                 character.SetDialogueState(DialogueStateEnum.None);
                 character.gameObject.SetActive(false);
             }
+
+            LoadStoriesFromFiles();
             LoadStory(1);
+
             if (currentStory == null)
             {
                 Debug.Log("No story found.");
@@ -46,7 +49,9 @@ public class StoryController : MonoBehaviour
 
     public void LoadStory(int storyId)
     {
-        Story searchedStory = stories[storyId - 1];
+        Debug.Log("Loading story ID: " + storyId);
+        Debug.Log("Stories length: " + stories.Count);
+        Story searchedStory = stories.FirstOrDefault(s => s.getId() == storyId);
         if (searchedStory != null)
         {
             currentStory = searchedStory;
@@ -177,34 +182,48 @@ public class StoryController : MonoBehaviour
 
     private void LoadStoriesFromFiles()
     {
-        for (int i = 0; i < storyFiles.Length; i++)
+        var settings = new JsonSerializerSettings
         {
-            try
+            NullValueHandling = NullValueHandling.Include,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+            Error = (sender, args) =>
             {
-                StoryJson storyJson = JsonConvert.DeserializeObject<StoryJson>(storyFiles[i].text);
-
-                if (storyJson != null)
-                {
-                    Debug.Log("Nom : " + storyJson.title);
-                    stories.Append(CreateStoryObjectFromData(storyJson, i + 1).GetComponent<Story>());
-                }
+                Debug.LogWarning("JSON warning: " + args.ErrorContext.Error.Message);
+                args.ErrorContext.Handled = true;
             }
-            catch (System.Exception e)
+        };
+        stories = new List<Story>();
+        for (int i = 0; i < storyFiles.Count; i++)
+        {
+           StoryJson storyJson = JsonConvert.DeserializeObject<StoryJson>(storyFiles[i].text, settings);
+
+            if (storyJson != null)
             {
-                Debug.LogError("Erreur JSON dans " + storyFiles[i].name + " : " + e.Message);
+                Debug.Log("Nom : " + storyJson.title);
+                if (!CreateStoryObjectFromData(storyJson, i + 1).TryGetComponent<Story>(out var story))
+                {
+                    Debug.Log("Story " + storyJson.title + " non crée");
+                    return;
+                }
+                stories.Add(story);
             }
         }
     }
 
     private GameObject CreateStoryObjectFromData(StoryJson storyJson, int storyIndex)
     {
-        GameObject storyObj = new GameObject("Story"+storyIndex);
+        GameObject storyObj = new("Story"+storyIndex);
         storyObj.transform.SetParent(gameObject.transform);
         Story story = storyObj.AddComponent<Story>();
         story.SetStoryData(storyJson);
         Debug.Log("Story created: " + story.GetTitle());
 
         return storyObj;
+    }
+
+    public List<Character> GetAllCharactersInScene()
+    {
+        return characters;
     }
 
     

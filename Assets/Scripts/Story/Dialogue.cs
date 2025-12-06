@@ -1,6 +1,8 @@
 using UnityEngine;
 using Enums;
 using System.Text.RegularExpressions;
+using System.Linq;
+using System.Collections.Generic;
 
 public class Dialogue : MonoBehaviour
 {
@@ -68,6 +70,48 @@ public class Dialogue : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void SetDialogueData(DialogueJson dialogueJson)
+    {
+        List<Character> allCharacters = StoryController.Instance.GetAllCharactersInScene();
+        if (dialogueJson.speaker != null)
+        {
+            Character character = allCharacters.FirstOrDefault(c => c.GetName() == dialogueJson.speaker);
+            if (character != null)
+            {   
+                speaker = character;
+            }
+        }
+        if (dialogueJson.listener != null)
+        {
+            Character character = allCharacters.FirstOrDefault(c => c.GetName() == dialogueJson.listener);
+            if (character != null)
+            {   
+                listener = character;
+            }
+        }
+        dialogueText = dialogueJson.dialogueText;
+        if (System.Enum.TryParse(dialogueJson.expression, out ExpressionEnum parsedExpression))
+        {
+            expression = parsedExpression;
+        }
+        else
+        {
+            expression = ExpressionEnum.Neutral;
+        }
+    }
+
+    public void SetAsEndDialogue()
+    {
+        isEndDialogue = true;
+    }
+
+    public void LogDatas()
+    {
+        string speakerName = speaker != null ? speaker.GetName() : "null";
+        string listenerName = listener != null ? listener.GetName() : "null";
+        Debug.Log($"Dialogue Name: {name}, Dialogue ID: {GetId()}, Speaker: {speakerName}, Listener: {listenerName}, Text: {dialogueText}, Expression: {expression}, IsEndDialogue: {isEndDialogue}");
     }
 
 }

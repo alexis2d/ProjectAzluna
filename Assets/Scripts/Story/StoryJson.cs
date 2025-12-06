@@ -1,3 +1,4 @@
+[System.Serializable]
 public class StoryJson
 {
     public string title;

@@ -1,3 +1,4 @@
+[System.Serializable]
 public class DialogueJson
 {
     public string speaker;
