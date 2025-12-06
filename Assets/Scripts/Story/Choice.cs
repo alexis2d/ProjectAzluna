@@ -32,5 +32,19 @@ public class Choice : MonoBehaviour
     {
         return isImportant;
     }
+
+    public void SetChoiceData(ChoiceJson choiceJson)
+    {
+        choiceText = choiceJson.choiceText;
+        if (System.Enum.TryParse(choiceJson.expression, out ExpressionEnum parsedExpression))
+        {
+            expression = parsedExpression;
+        }
+        else
+        {
+            expression = ExpressionEnum.Neutral;
+        }
+        isImportant = false; // Default value; can be modified later if needed
+    }
     
 }

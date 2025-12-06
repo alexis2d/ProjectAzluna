@@ -97,24 +97,23 @@
             "listener": null,
             "dialogueText": "Oh, speaking of...",
             "expression": "Neutral",
-            "choices": {
-                "isImportant": true,
-                "1": {
+            "choices": [
+                {
                     "choiceText": "Ask Anani about her cello practice.",
                     "nextDialogue": null,
                     "expression": null
                 },
-                "2": {
+                {
                     "choiceText": "Ask Azri how her volunteering is going.",
                     "nextDialogue": null,
                     "expression": null
                 },
-                "3": {
+                {
                     "choiceText": "Have Lumi talk about how her training went today.",
                     "nextDialogue": null,
                     "expression": null
                 }
-            }
+            ]
         }
     ]
 }

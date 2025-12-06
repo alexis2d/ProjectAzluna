@@ -100,6 +100,42 @@ public class Dialogue : MonoBehaviour
         {
             expression = ExpressionEnum.Neutral;
         }
+        if (dialogueJson.choices == null)
+        {
+            Debug.LogWarning("Choices array is null in the dialogue JSON.");
+            return;
+        }
+        if (dialogueJson.choices.Length > 0)
+        {
+            for (int i = 0; i < dialogueJson.choices.Length; i++)
+            {
+                ChoiceJson choiceJson = dialogueJson.choices[i];
+
+                if (choiceJson != null)
+                {
+                    if (!CreateChoiceObjectFromData(choiceJson, i + 1).TryGetComponent<Choice>(out var choice))
+                    {
+                        Debug.Log("Choix " + i + " non créé");
+                        return;
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No choices found in the story JSON.");
+        }
+    }
+
+    private GameObject CreateChoiceObjectFromData(ChoiceJson choiceJson, int choiceIndex)
+    {
+        GameObject choiceObj = new("Choice" + GetId() + "-" + choiceIndex);
+        choiceObj.transform.SetParent(gameObject.transform);
+        Choice choice = choiceObj.AddComponent<Choice>();
+        choice.SetChoiceData(choiceJson);
+        Debug.Log("Dialogue created: " + choiceIndex);
+
+        return choiceObj;
     }
 
     public void SetAsEndDialogue()

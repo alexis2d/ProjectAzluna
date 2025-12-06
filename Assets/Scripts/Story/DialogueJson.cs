@@ -5,4 +5,5 @@ public class DialogueJson
     public string listener;
     public string dialogueText;
     public string expression;
+    public ChoiceJson[] choices;
 }
