@@ -18,8 +18,7 @@ public class Story : MonoBehaviour
 
     public void StartStory()
     {
-       /*SetDialogues();
-        SetCharacters();*/
+       SetCharacters();
     }
 
     public void EndStory()
@@ -34,6 +33,14 @@ public class Story : MonoBehaviour
     private void SetId()
     {
         id = int.Parse(Regex.Replace(gameObject.name, "[^0-9]", ""));
+    }
+
+    private void SetCharacters()
+    {
+        foreach (Character character in characters)
+        {
+            character.gameObject.SetActive(true);
+        }
     }
 
     public int getId()
@@ -74,6 +81,12 @@ public class Story : MonoBehaviour
             Debug.LogError("Parameters to SetStoryData cannot be null.");
             return;
         }
+
+        if (storyJson.background != null)
+        {
+            BackgroundManager.Instance.SetBackground(storyJson.background);
+        }
+
         SetId();
         characters = new List<Character>();
         if (storyJson.characters.Length > 0)
