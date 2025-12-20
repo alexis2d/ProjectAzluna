@@ -12,13 +12,18 @@ public class Story : MonoBehaviour
     [SerializeField]
     private List<Character> characters;
     private List<Dialogue> dialogues;
+    private string backgroundName;
     private int currentDialogueIndex = 0;
     private int id;
 
 
     public void StartStory()
     {
-       SetCharacters();
+        SetCharacters();
+        if (backgroundName != null)
+        {
+            BackgroundManager.Instance.SetBackground(backgroundName);
+        }
     }
 
     public void EndStory()
@@ -82,11 +87,8 @@ public class Story : MonoBehaviour
             return;
         }
 
-        if (storyJson.background != null)
-        {
-            BackgroundManager.Instance.SetBackground(storyJson.background);
-        }
-
+        backgroundName = storyJson.background;
+        
         SetId();
         characters = new List<Character>();
         if (storyJson.characters.Length > 0)
