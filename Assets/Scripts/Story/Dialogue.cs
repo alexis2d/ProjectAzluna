@@ -100,23 +100,26 @@ public class Dialogue : MonoBehaviour
         {
             expression = ExpressionEnum.Neutral;
         }
-        if (dialogueJson.choices == null)
+        if (dialogueJson.choices == null || dialogueJson.choices.choiceData == null)
         {
             Debug.LogWarning("Choices array is null in the dialogue JSON.");
             return;
         }
-        if (dialogueJson.choices.Length > 0)
+        if (dialogueJson.choices.choiceData.Length > 0)
         {
-            for (int i = 0; i < dialogueJson.choices.Length; i++)
+            for (int i = 0; i < dialogueJson.choices.choiceData.Length; i++)
             {
-                ChoiceJson choiceJson = dialogueJson.choices[i];
-
-                if (choiceJson != null)
+                ChoiceDataJson choiceDataJson = dialogueJson.choices.choiceData[i];
+                if (choiceDataJson != null)
                 {
-                    if (!CreateChoiceObjectFromData(choiceJson, i + 1).TryGetComponent<Choice>(out var choice))
+                    if (!CreateChoiceObjectFromData(choiceDataJson, i + 1).TryGetComponent<Choice>(out var choice))
                     {
                         Debug.Log("Choix " + i + " non créé");
                         return;
+                    }
+                    if (dialogueJson.choices.functionName != null)
+                    {
+                        choice.SetIsImportant(true);
                     }
                 }
             }
@@ -127,12 +130,12 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private GameObject CreateChoiceObjectFromData(ChoiceJson choiceJson, int choiceIndex)
+    private GameObject CreateChoiceObjectFromData(ChoiceDataJson choiceDataJson, int choiceIndex)
     {
         GameObject choiceObj = new("Choice" + GetId() + "-" + choiceIndex);
         choiceObj.transform.SetParent(gameObject.transform);
         Choice choice = choiceObj.AddComponent<Choice>();
-        choice.SetChoiceData(choiceJson);
+        choice.SetChoiceData(choiceDataJson);
         Debug.Log("Dialogue created: " + choiceIndex);
 
         return choiceObj;

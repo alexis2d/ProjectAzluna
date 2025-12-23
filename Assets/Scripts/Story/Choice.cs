@@ -33,10 +33,15 @@ public class Choice : MonoBehaviour
         return isImportant;
     }
 
-    public void SetChoiceData(ChoiceJson choiceJson)
+    public void SetIsImportant(bool newIsImportant) 
+    { 
+        isImportant = newIsImportant; 
+    }
+
+    public void SetChoiceData(ChoiceDataJson choiceData)
     {
-        choiceText = choiceJson.choiceText;
-        if (System.Enum.TryParse(choiceJson.expression, out ExpressionEnum parsedExpression))
+        choiceText = choiceData.choiceText;
+        if (System.Enum.TryParse(choiceData.expression, out ExpressionEnum parsedExpression))
         {
             expression = parsedExpression;
         }
@@ -44,7 +49,7 @@ public class Choice : MonoBehaviour
         {
             expression = ExpressionEnum.Neutral;
         }
-        isImportant = false; // Default value; can be modified later if needed
+        isImportant = false;
     }
     
 }

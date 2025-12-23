@@ -98,23 +98,26 @@
             "listener": null,
             "dialogueText": "Oh, speaking of...",
             "expression": "Neutral",
-            "choices": [
-                {
-                    "choiceText": "Ask Anani about her cello practice.",
-                    "nextDialogue": null,
-                    "expression": null
-                },
-                {
-                    "choiceText": "Ask Azri how her volunteering is going.",
-                    "nextDialogue": null,
-                    "expression": null
-                },
-                {
-                    "choiceText": "Have Lumi talk about how her training went today.",
-                    "nextDialogue": null,
-                    "expression": null
-                }
-            ]
+            "choices": {
+                "function": "ChoiceForLumiAskingOthersOrTellingAboutHerself",
+                "datas": [
+                    {
+                        "choiceText": "Ask Anani about her cello practice.",
+                        "nextDialogue": null,
+                        "expression": null
+                    },
+                    {
+                        "choiceText": "Ask Azri how her volunteering is going.",
+                        "nextDialogue": null,
+                        "expression": null
+                    },
+                    {
+                        "choiceText": "Have Lumi talk about how her training went today.",
+                        "nextDialogue": null,
+                        "expression": null
+                    }
+                ]
+            }
         }
     ]
 }
