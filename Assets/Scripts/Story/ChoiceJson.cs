@@ -1,9 +1,7 @@
-using System;
-
 [System.Serializable]
 public class ChoiceJson
 {
-    public string functionName;
-    public ChoiceDataJson[] choiceData;
+    public string function;
+    public ChoiceDataJson[] datas;
 
 }

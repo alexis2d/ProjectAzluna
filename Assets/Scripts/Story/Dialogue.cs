@@ -7,15 +7,10 @@ using System.Collections.Generic;
 public class Dialogue : MonoBehaviour
 {
 
-    [SerializeField]
     private Character speaker;
-    [SerializeField]
     private Character listener;
-    [SerializeField]
     private string dialogueText;
-    [SerializeField]
     private ExpressionEnum expression;
-    [SerializeField]
     private bool isEndDialogue = false;
 
     public Character GetSpeaker()
@@ -100,16 +95,18 @@ public class Dialogue : MonoBehaviour
         {
             expression = ExpressionEnum.Neutral;
         }
-        if (dialogueJson.choices == null || dialogueJson.choices.choiceData == null)
+        
+        if (dialogueJson.choices == null || dialogueJson.choices.datas == null)
         {
             Debug.LogWarning("Choices array is null in the dialogue JSON.");
             return;
         }
-        if (dialogueJson.choices.choiceData.Length > 0)
+        
+        if (dialogueJson.choices.datas.Length > 0)
         {
-            for (int i = 0; i < dialogueJson.choices.choiceData.Length; i++)
+            for (int i = 0; i < dialogueJson.choices.datas.Length; i++)
             {
-                ChoiceDataJson choiceDataJson = dialogueJson.choices.choiceData[i];
+                ChoiceDataJson choiceDataJson = dialogueJson.choices.datas[i];
                 if (choiceDataJson != null)
                 {
                     if (!CreateChoiceObjectFromData(choiceDataJson, i + 1).TryGetComponent<Choice>(out var choice))
@@ -117,9 +114,10 @@ public class Dialogue : MonoBehaviour
                         Debug.Log("Choix " + i + " non créé");
                         return;
                     }
-                    if (dialogueJson.choices.functionName != null)
+                    if (dialogueJson.choices.function != null)
                     {
                         choice.SetIsImportant(true);
+                        choice.SetFunctionName(dialogueJson.choices.function);
                     }
                 }
             }

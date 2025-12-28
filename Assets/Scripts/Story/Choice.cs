@@ -4,14 +4,11 @@ using UnityEngine;
 public class Choice : MonoBehaviour
 {
 
-    [SerializeField]
     private string choiceText;
-    [SerializeField]
     private Dialogue nextDialogue;
-    [SerializeField]
     private ExpressionEnum expression;
-    [SerializeField]
     private bool isImportant;
+    private string functionName;
 
     public string GetText()
     {
@@ -33,9 +30,19 @@ public class Choice : MonoBehaviour
         return isImportant;
     }
 
+    public string GetFunctionName()
+    {
+        return functionName;
+    }
+
     public void SetIsImportant(bool newIsImportant) 
     { 
         isImportant = newIsImportant; 
+    }
+
+    public void SetFunctionName(string newFunctionName) 
+    { 
+        functionName = newFunctionName; 
     }
 
     public void SetChoiceData(ChoiceDataJson choiceData)
