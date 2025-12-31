@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using Enums;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
@@ -17,6 +17,7 @@ public class StoryController : MonoBehaviour
     private static StoryController instance;
     public static StoryController Instance { get { return instance; } }
     private Choice[] importantChoices;
+    private Dictionary<string, Action<int>> functionMap;
 
     private void Awake()
     {
@@ -39,6 +40,8 @@ public class StoryController : MonoBehaviour
                 Debug.Log("No story found.");
                 return;
             }
+
+            SetFunctionMap();
             ShowCurrentDialogue();
         }
         else
@@ -75,7 +78,7 @@ public class StoryController : MonoBehaviour
         }
     }
 
-    private void ShowCurrentDialogue()
+    public void ShowCurrentDialogue()
     {
         ResetCharacters();
         if (currentDialogue != null)
@@ -110,6 +113,11 @@ public class StoryController : MonoBehaviour
         if (listener != null)
         {
             listener.SetExpression(choice.GetExpression());
+        }
+        if (choice.GetFunctionName() != null)
+        {
+            RunFunction(choice.GetFunctionName(), choice.GetId());
+            return;
         }
         if (nextDialogue == null && currentDialogue.IsEndDialogue())
         {
@@ -226,5 +234,28 @@ public class StoryController : MonoBehaviour
         return characters;
     }
 
+    private void SetFunctionMap()
+    {
+         functionMap = new Dictionary<string, Action<int>>
+        {
+            {
+                "ChoiceForLumiAskingOthersOrTellingAboutHerself",
+                (value) => ChoiceController.Instance
+                    .ChoiceForLumiAskingOthersOrTellingAboutHerself(value)
+            }
+        };
+    }
+
+    private void RunFunction(string functionName, int choiceId)
+    {
+        if (functionMap.TryGetValue(functionName, out var action))
+        {
+            action.Invoke(choiceId);
+        }
+        else
+        {
+            Debug.LogWarning($"Function not found: {functionName}");
+        }
+    }
     
 }

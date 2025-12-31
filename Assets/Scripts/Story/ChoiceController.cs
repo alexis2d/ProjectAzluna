@@ -19,9 +19,24 @@ public class ChoiceController : MonoBehaviour
         }
     }
 
-    public void ChoiceForLumiAskingOthersOrTellingAboutHerself()
+    public void ChoiceForLumiAskingOthersOrTellingAboutHerself(int choiceId)
     {
-        // Implementation for handling the choice
+        switch (choiceId)
+        {
+            case 1:
+                StoryController.Instance.LoadStory(3);
+                break;
+            case 2:
+                StoryController.Instance.LoadStory(4);
+                break;
+            case 3:
+                StoryController.Instance.LoadStory(5);
+                break;
+            default:
+                Debug.Log("Invalid choice ID for Lumi Asking Others or Telling About Herself: " + choiceId);
+                return;
+        }
+        StoryController.Instance.ShowCurrentDialogue();
     }
 
 }

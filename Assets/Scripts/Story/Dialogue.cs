@@ -134,6 +134,7 @@ public class Dialogue : MonoBehaviour
         choiceObj.transform.SetParent(gameObject.transform);
         Choice choice = choiceObj.AddComponent<Choice>();
         choice.SetChoiceData(choiceDataJson);
+        choice.SetId(choiceIndex);
         Debug.Log("Dialogue created: " + choiceIndex);
 
         return choiceObj;

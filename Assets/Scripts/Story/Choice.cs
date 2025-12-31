@@ -4,6 +4,7 @@ using UnityEngine;
 public class Choice : MonoBehaviour
 {
 
+    private int choiceId;
     private string choiceText;
     private Dialogue nextDialogue;
     private ExpressionEnum expression;
@@ -13,6 +14,11 @@ public class Choice : MonoBehaviour
     public string GetText()
     {
         return choiceText;
+    }
+
+    public int GetId()
+    {
+        return choiceId;
     }
 
     public Dialogue GetNextDialogue()
@@ -33,6 +39,11 @@ public class Choice : MonoBehaviour
     public string GetFunctionName()
     {
         return functionName;
+    }
+
+    public void SetId(int newId) 
+    { 
+        choiceId = newId; 
     }
 
     public void SetIsImportant(bool newIsImportant) 
